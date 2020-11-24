@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<h1 class="text-center text-danger" style="margin-top: 10px;">User Profile</h1> <br>
+
+<div class="container" style="margin-top: 10px;">
+    <div class="row">
+        <div class="col">
+
+            <div class="card border-secondary mb-3" style="max-width: 1200px;">
+                <div class="row no-gutters">                        
+                    <div class="col-md-4">
+                    {% if page_user.prifile_pic %}    
+                        <img src="{{ page_user.prifile_pic.url }}" class="card-img">
+                    {% else %}
+                        <img src="{% static 'theblog/images/default_profile_pic.png' %}" height="300" width="300">
+                    {% endif %}
+                    </div>                        
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                {{ page_user }}
+                            </h5>
+                            <p class="small text-muted">
+
+                                {% if page_user.website_url %}
+                                <a href="{{ page_user.website_url }}">Website<a> 
+                                {% endif %}
+
+                                {% if page_user.facebook_url %}
+                                <a href="{{ page_user.facebook_url }}">| FaceBook</a>
+                                {% endif %}
+
+                                {% if page_user.twitter_url %}
+                                <a href="{{ page_user.twitter_url }}">| Twitter</a>
+                                {% endif %}
+
+                                {% if post.author.profile.instagram_url %}
+                                <a href="{{ post.author.profile.instagram_url }}">| Instagram</a>
+                                {% endif %}
+
+                                {% if page_user.printerest_url %}
+                                <a href="{{ page_user.printerest_url }}">| Printrest</a>
+                                {% endif %}
+                            </p>
+                            <hr>
+                            <p class="card-text">{{ page_user.bio }}</p>
+                        </div>
+                    </div>
+                </div>         
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

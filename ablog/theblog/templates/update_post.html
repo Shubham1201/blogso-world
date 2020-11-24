@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Post{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+        <h1>Update Post</h1>
+        <div class="container">
+            <div class="from-group">
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form.as_p }}
+                    <br>
+                    <button class="btn btn-primary">Update</button>
+                </form>
+            </div>
+        </div>
+
+        {% else %}
+        <p class="text-center text-danger" style="font-size: 50px;  margin-top: 10px;">you are not allowed here mother
+            fucker.....</p>
+    {% endif %}
+{% else %}
+<p class="text-center text-danger" style="font-size: 50px;  margin-top: 10px;">you are not allowed here mother
+    fucker.....</p>
+
+{% endif %}
+
+{% endblock %}

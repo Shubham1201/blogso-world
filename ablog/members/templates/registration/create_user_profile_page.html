@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}Create Profile{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1 class="text-center text-danger" style="margin-top: 10px;">Create Profile</h1> <br>
+<div class="container">
+    <div class="from-group">
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary">Create Profile</button>
+        </form> <br>
+    </div>
+</div>
+{% else %}
+<p class="text-center text-danger" style="font-size: 50px;  margin-top: 10px;">you are not allowed here mother
+    fucker.....</p>
+
+{% endif %}
+
+{% endblock %}
